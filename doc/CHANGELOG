@@ -1,0 +1,70 @@
+   Changelog
+  ~~~~~~~~~~~
+
+* 0.1.1
+	- phpSANE verifies that a scanner is connected and does not print
+	  strange errors.
+	- phpSANE is available in English and German.
+	- Automatic installation with a bash-script.
+
+* 0.2.0
+	- phpSANE supports preview now.
+
+* 0.3.0
+	- phpSANE supports OCR now (requires gocr).
+
+* 0.3.1
+	- You can specify your scanner manually (if phpSANE does not detect it).
+	- The automatic installation _should_ do all necessary things now.
+
+* 0.3.2
+	- Fixed bug #1086548
+
+* 0.3.3
+	- Some feature enhancements by Stefan Bernshausen <stefan@bernshausen.org>
+
+* 0.4.0
+	- Fixed bug #1104508
+	- Supports feature #1104513
+	- Code cleaned up.
+
+* 0.4.1
+	- phpSANE now works without register_global
+
+* 0.5.0
+	- major update by John Walsh <john.walsh@mini-net.co.uk>
+	- updated/fixed code for latest PHP 5
+	- fixed all functionality for scan options and file types
+	- added 'Extra' user options input area
+	- added 'help' page to web interface
+	- re-write of html and css for more standard/flexible page layout
+	- cleaned up the config file, and made all options configurable
+	  from the config.php so that no other files need changing
+
+* 0.5.1
+	- minor update by John Walsh <john.walsh@mini-net.co.uk>
+	- updated/fixed code for detecting resolutions supported, to include
+	  ranges
+
+* 0.6.0
+	- update by Wojciech Bronisz <wojtek@bronisz.eu>
+	- Draw a box when selecting the scan area
+	- Scanned file does not open pop-up windows (an option in config.php "save_type")
+	- Scanned files are saved in "output" directory
+	- While setting scan option is to broadcast the resulting
+	  file name (form field), if the file already exists in the
+	  directory "output" is added to the current date (YYYY-MM-dd HH-mm-ss)
+	- And other small fixes in the code needed for these things
+	- Add Polish language program.
+
+* 0.6.1
+	- JS scripting code is not inserted directly into the HTML code
+	- forms are sent by POST
+	- changed encoding to UTF-8 with a view to creating translations in other languages
+	- added finish translation
+	- added russian translation
+	- added ukrainian translation
+	- fixed typo in lineart (monochrom) scan mode
+	- changed scanner detection routine to avoid webcams detected as scanners
+	- added support for pdf output through imagemagick
+	- changed mode option to support scanimage 1.0.21+
