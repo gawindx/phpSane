@@ -139,7 +139,7 @@ if ($do_source){
 					}
 					var select_index = -1;
 					for(var i = 0; i < format_option.length; i++){
-						if (format_option[i] == '' ){
+						if (!format_option[i].replace(/\s/g, '').length) {
 							continue;
 						}
 						option_text = format_option[i].match(/>(.*)</);
@@ -175,7 +175,7 @@ if ($do_source){
 					}
 					var select_index = -1;
 					for(var i = 0; i < format_option.length; i++){
-						if (format_option[i] == '' ){
+						if (!format_option[i].replace(/\s/g, '').length) {
 							continue;
 						}
 						option_text = format_option[i].match(/>(.*)</);
