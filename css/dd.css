@@ -1,6 +1,6 @@
 .borderRadius{-moz-border-radius:5px; border-radius:5px; }
-/*.borderRadiusTp{-moz-border-radius:5px 5px 0 0; border-top-left-radius:5px 5px 0 0;}
-.borderRadiusBtm{-moz-border-radius:0 0 5px 5px ; border-radius:0 0 5px 5px;}*/
+.borderRadiusTp{-moz-border-radius:5px 5px 0 0; border-radius:5px 5px 0 0;}
+.borderRadiusBtm{-moz-border-radius:0 0 5px 5px ; border-radius:0 0 5px 5px;}
 
 .ddcommon {position:relative;display:-moz-inline-stack; zoom:1; display:inline-block; *display:inline; cursor:default;}
 .ddcommon ul{padding:0;margin:0;}
@@ -26,8 +26,8 @@ color:#999999;
 .borderRadiusBtm .border{-moz-border-radius:5px 5px 0 0; border-radius:5px 5px 0 0;}
 img.fnone{float:none !important}
 .ddcommon .divider{width:0; height:100%; position:absolute;}
-.ddcommon .arrow{display:inline-block; position:absolute; top:50%; right:4px;}
-.ddcommon .arrow:hover{background-position:0 100%;}
+.ddcommon .ddArrow{display:inline-block; position:absolute; top:50%; right:4px;}
+.ddcommon .ddArrow:hover{background-position:0 100%;}
 .ddcommon .ddTitle{padding:0; position:relative; display:inline-block; width:100%}
 .ddcommon .ddTitle .ddTitleText{display:block;}
 .ddcommon .ddTitle .ddTitleText .ddTitleText{padding:0;}
@@ -45,12 +45,12 @@ img.fnone{float:none !important}
 /*************** default theme **********************/
 .dd{border:1px solid #c3c3c3;}
 .dd .divider{border-left:1px solid #c3c3c3; border-right:1px solid #fff;; right:24px;}
-.dd .arrow{width:16px;height:16px; margin-top:-8px; background:url(../images/msdropdown_arrow.gif) no-repeat;}
-.dd .arrow:hover{background-position:0 100%;}
-.dd .ddTitle{color:#000;background:#e2e2e4 url(../images/msdropdown_bg.gif) repeat-x left top;}
+.dd .ddArrow{width:16px;height:16px; margin-top:-8px; background:url(../../images/msdropdown/skin1/dd_arrow.gif) no-repeat;}
+.dd .ddArrow:hover{background-position:0 100%;}
+.dd .ddTitle{color:#000;background:#e2e2e4 url(../../images/msdropdown/skin1/title-bg.gif) repeat-x left top;}
 .dd .ddTitle .ddTitleText{padding:5px 20px 5px 5px;}
 .dd .ddTitle .ddTitleText .ddTitleText{padding:0;}
-.dd .ddTitle .description{font-size:12px; color:#666;}
+.dd .ddTitle .description{font-size:12px; color:#666}
 .dd .ddTitle .ddTitleText img{padding-right:5px;}
 .dd .ddChild{border:1px solid #c3c3c3; background-color:#fff; left:-1px;}
 .dd .ddChild li{padding:5px; background-color:#fff; border-bottom:1px solid #c3c3c3;}
@@ -62,26 +62,3 @@ img.fnone{float:none !important}
 .dd .ddChild li.optgroup .optgroupTitle{padding:0 5px; font-weight:bold; font-style:italic}
 .dd .ddChild li.optgroup ul li{padding:5px 5px 5px 15px}
 .dd .ddChild li.selected{background-color:#d5d5d5; color:#000;}
-
-/******************* custom *************************/
-
-/* have padding and border inside width/height defined in width and height properties */
-.dd {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* prevent selection of text in dropdown */
-.ddcommon {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* prevent background overflow on the border-radius */
-.borderRadiusTp{-moz-border-top-left-radius:5px; -moz-border-top-right-radius:5px; border-top-left-radius:5px; border-top-right-radius:5px;}
-.borderRadiusBtm{-moz-border-bottom-left-radius:5px; -moz-border-bottom-right-radius:5px; border-bottom-left-radius:5px; border-bottom-right-radius:5px;}

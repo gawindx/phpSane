@@ -473,3 +473,30 @@ a:focus {
   border-width: 0px;
   padding: 0px !important;
 }
+
+/******************* custom  msdropdown.css *************************/
+
+/* have padding and border inside width/height defined in width and height properties */
+.dd {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* prevent selection of text in dropdown */
+.ddcommon {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Adjust height of fnone img*/
+img.fnone{float:none !important;height:24px;}
+
+/* prevent background overflow on the border-radius */
+.borderRadiusTp{-moz-border-radius:0 0 0 0;border-radius:0 0 0 0;-moz-border-top-left-radius:5px; -moz-border-top-right-radius:5px; border-top-left-radius:5px; border-top-right-radius:5px;}
+.borderRadiusBtm{-moz-border-radius:0 0 0 0;border-radius:0 0 0 0;-moz-border-bottom-left-radius:5px; -moz-border-bottom-right-radius:5px; border-bottom-left-radius:5px; border-bottom-right-radius:5px;}
+

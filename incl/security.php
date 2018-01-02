@@ -46,7 +46,6 @@ function valid_or_dead($key, $constraint, $regex='') {
 		}
 	}
 }
-
 // action
 valid_or_dead('action', 'regex', '/[a-z0-9]*/i');
 // brightness
@@ -85,6 +84,5 @@ valid_or_dead('usr_opt', 'inverse_regex', '(;|&&|\|\||<|>|<<|>>)');
 valid_or_dead('file_save', 'filepath');
 // file_save_image
 valid_or_dead('first', 'regex', '/^[01]$/i');
-
 // REMOTE_ADDR
 valid_or_dead('REMOTE_ADDR', 'regex', '/^[0-9.:]+$/i');
