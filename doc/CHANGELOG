@@ -1,5 +1,5 @@
-   Changelog
-  ~~~~~~~~~~~
+Changelog
+~~~~~~~~~~~
 * 0.8.1
 	- Add support of multiple Source (Flatbed/ADF) (option disabled when not available)
 	- msdropdown was updated to last version (v3.5.2)
