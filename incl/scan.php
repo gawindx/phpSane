@@ -132,7 +132,7 @@ if ($error_input == 0){
 			$cmd_device = $cmd_scan." > '$file_save'";
 		}
 		if ( ($format == "tif") && ($source =="ADF")){
-			$cmd_device = $cmd_scan." && {$CONVERT} '{$temp_dir}out*.tif' '$file_save'";
+			$cmd_device = $cmd_scan." && {$CONVERT} '{$temp_dir}out*.tif' -compress jpeg -quality 90 -density {$resolution} '$file_save'";
 		}elseif ($format == "tif") {
 			$cmd_device = $cmd_scan." | {$PNMTOTIFF} > '$file_save'";
 		}
@@ -149,7 +149,7 @@ if ($error_input == 0){
 			convert: unable to read image data `-' @ error/pnm.c/ReadPNMImage/766.
 			convert: no images defined `pdf:-' @ error/convert.c/ConvertImageCommand/3044.
 			*/
-			$cmd_device = $cmd_scan." && {$CONVERT} '{$temp_dir}out*.tif' -compress jpeg -quality 100 -density {$resolution} pdf:- > '$file_save'";
+			$cmd_device = $cmd_scan." && {$CONVERT} '{$temp_dir}out*.tif' -compress jpeg -quality 90 -density {$resolution} pdf:- > '$file_save'";
 		}elseif ($format == "pdf"){
 			//$cmd_device = $cmd_scan." | {$CONVERT} pnm:- -compress jpeg -quality 100 -density {$resolution} pdf:- > \"".$file_save."\"";
 			/*
