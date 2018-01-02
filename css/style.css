@@ -483,6 +483,10 @@ a:focus {
   box-sizing: border-box;
 }
 
+/* Modify image of dd class */
+.dd .ddArrow{width:16px;height:16px; margin-top:-8px; background:url(../images/msdropdown_arrow.gif) no-repeat;}
+.dd .ddTitle{color:#000;background:#e2e2e4 url(../images/msdropdown_bg.gif) repeat-x left top;}
+
 /* prevent selection of text in dropdown */
 .ddcommon {
   -webkit-touch-callout: none;
