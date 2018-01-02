@@ -1,7 +1,7 @@
 phpSANE is a web-based frontend for SANE written in HTML/PHP so you can scan with your web-browser. It also supports OCR.  
 It's forked from [SourceForge phpSane](https://sourceforge.net/projects/phpsane/)
 
-[<img src="https://github.com/gawindx/phpSane/blob/master/images/phpSane_Screenshot_1.png">](https://github.com/gawindx/phpSane)
+[![Screen Shot 1](https://github.com/gawindx/phpSane/blob/master/images/phpSane_Screenshot_1.png)](https://github.com/gawindx/phpSane)
 [![Screen Shot 2](https://github.com/gawindx/phpSane/blob/master/images/phpSane_Screenshot_2.png)](https://github.com/gawindx/phpSane)
 
 ## Installing phpSANE on FreeBSD
