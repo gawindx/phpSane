@@ -206,8 +206,8 @@ if ($do_source){
 <?php
 	if ($do_source && $source_default != "" ) {
 		echo "
-			  var original_format_select = $('#format')[0].innerHTML;
-			  var original_source_value ='".$source_default."';
+		var original_format_select = $('#format')[0].innerHTML;
+		var original_source_value ='".$source_default."';
 		";
 	}
 ?>
