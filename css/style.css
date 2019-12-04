@@ -85,8 +85,12 @@ a:focus {
 }
 
 #language_select {
-  width: 10.5em;
+  width: 12.5em;
   display: inline-block;
+}
+
+#language_select_msdd {
+  width: 12em;
 }
 
 /* ------------------------------------------------------------------ */

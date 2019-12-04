@@ -23,8 +23,8 @@ header('Content-Type: text/html; charset=utf-8');
 	<meta name="robots" content="noindex">
 	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 	<title>phpSANE</title>
-	<link rel="icon" href="favicon.ico" type="image/x-icon" />
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+	<link rel="icon" href="favicon.ico" type="image/png" />
+	<link rel="shortcut icon" href="favicon.ico" type="image/png" />
 	<link rel="stylesheet" href="css/jquery.jcrop.css" type="text/css" />
 	<link rel="stylesheet" href="css/dd.css" type="text/css" />
 	<link rel="stylesheet" href="css/nouislider.fox.css" type="text/css" />
@@ -142,6 +142,7 @@ if ($do_source){
 						if (!format_option[i].replace(/\s/g, '').length) {
 							continue;
 						}
+
 						option_text = format_option[i].match(/>(.*)</);
 						option_value = format_option[i].match(/.*value=\"(.*)\".*=/);
 						option_title = '';
@@ -354,7 +355,7 @@ if ($do_source){
 
 		//delete selected files
 		$("#file_delete").click(function(event){
-			if(!confirm('<?php echo $lang[$lang_id][12] ?>')) {
+			if(!confirm("<?php echo $lang[$lang_id][12] ?>")) {
 				//user cancelled, prevent commit
 				event.preventDefault();
 			}
@@ -374,11 +375,11 @@ if ($do_source){
 				if(data.length > 0) {
 					window.location.assign(data);
 				} else {
-					alert('<?php echo $lang[$lang_id][13] ?>');
+					alert("<?php echo $lang[$lang_id][13] ?>");
 			}
 			})
 			.fail(function() {
-				alert('<?php echo $lang[$lang_id][13] ?>');
+				alert("<?php echo $lang[$lang_id][13] ?>");
 			})
 			.always(function() {
 				event.target.disabled = false;
@@ -393,7 +394,7 @@ if ($do_source){
 //extend scanned document with another page only if multiple source is not activated or source is "Flatbed" (default value)
 	if ($action_save && (($format == "pdf" && $do_append_pdf) || ($format == "txt" && $do_append_txt )) && (!($do_source) || $source == $source_default ) ) {
 		echo "
-		if(confirm('{$lang[$lang_id][50]}')) {
+		if(confirm(\"{$lang[$lang_id][50]}\")) {
 			$('#append_file').val('{$file_save}');
 			$('#tab_menu_buttons_accept').click();
 		}";
@@ -408,7 +409,7 @@ if ($do_source){
 <?php
 
 ////////////////////////////////////////////////////////////////////////
-	echo "	<form id='menuForm' action='phpsane.php' method='POST'>
+	echo "	<form id='menuForm' action='index.php' method='POST'>
 	<input type=hidden name='first' value='$first'>
 	<input type=hidden name='lang_id' id='lang_id' value='$lang_id'>
 	<input type=hidden name='sid' value='$sid'>
@@ -425,7 +426,7 @@ if ($do_source){
 	echo "	<table id='page_header' width='100%'>
 		<tr>
 			<td>
-				<a href='phpsane.php'>
+				<a href='index.php'>
 				<img id='logo' src='images/logo.jpg' alt='phpSANE'>
 				</a>";
 
@@ -445,6 +446,7 @@ if ($do_source){
 							<option"; if ($lang_id==6) echo " selected"; echo " value='6' data-image='images/lang_fr.gif'>" . $lang[6][20]."</option>
 							<option"; if ($lang_id==7) echo " selected"; echo " value='7' data-image='images/lang_nl.gif'>" . $lang[7][20]."</option>
 							<option"; if ($lang_id==8) echo " selected"; echo " value='8' data-image='images/lang_cz.gif'>" . $lang[8][20]."</option>
+							<option"; if ($lang_id==9) echo " selected"; echo " value='9' data-image='images/lang_it.gif'>" . $lang[9][20]."</option>
 						</select>
 					</li>
 				</ul>";
