@@ -1,4 +1,7 @@
 <?php
+
+
+
 echo "<table id='tab_menu_settings'>
 	<tr>
 		<th colspan='3'>".$lang[$lang_id][21]."</th>
@@ -114,6 +117,8 @@ if ($do_contrast) {
 	</tr>";
 }
 
+
+
 if ($do_source) {
 	echo "
 	<tr>
@@ -122,8 +127,15 @@ if ($do_source) {
 			<select id='source' name='source' size=1>";
 	foreach ($source_list as $index => $source_values) {
 		echo "				<option value='" . $source_values . "'";
-		if ((isset($_POST['source']) && ($_POST['source'] == $source_values)) || (!isset($_POST['source']) && ($source_values == $source_default))) echo " selected";
-			echo " data-image='images/source_" . strtolower($source_values) . ".png' height='24px'>{$source_values}</option>";
+		if ((isset($_POST['source']) && ($_POST['source'] == $source_values)) ||
+		 (!isset($_POST['source']) && ($source_values == $source_default))) echo " selected";
+		$source_label = $source_values;
+		if (strtolower($source_label) == 'flatbed')
+			$source_label = $lang[$lang_id][62];
+		if (strtolower($source_label) == 'adf')
+			$source_label = $lang[$lang_id][63];
+
+			echo " data-image='images/source_" . strtolower($source_values) . ".png' height='24px'>{$source_label}</option>";
 		}
 		echo "
 		</td>
@@ -171,4 +183,3 @@ echo "
 		<td class='unit_column'></td>
 		</tr>
 </table>\n";
-?>

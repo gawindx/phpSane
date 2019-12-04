@@ -37,8 +37,9 @@ $SCAN_NET_SETUP = '';
 // 6 = french
 // 7 = dutch
 // 8 = czech
+// 9 = italian
 //$lang_id = 1;
-$lang_id = 6;
+$lang_id = 9;
 
 
 // set your scanner maximum page size, and a low dpi for previews

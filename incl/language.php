@@ -120,7 +120,7 @@ $lang[1] = array(
 	"no scan command",		// 39
 	"Page size",			// 40
 	"File name",			// 41
-	"accept",				// 42
+	"Accept",				// 42
 	"PDF document",			// 43
 	"JPEG image",			// 44
 	"PNM image",			// 45
@@ -140,6 +140,8 @@ $lang[1] = array(
 	"Delete",				// 59
 	"scan_",				// 60
 	"Source",				// 61
+	"Flatbad",				// 62
+	"ADF",				// 63
 );
 
 
@@ -228,6 +230,8 @@ $lang[2] = array(
 	"Delete",			// 59
 	"scan_",			// 60
 	"Źródło",			// 61
+	"Flatbad",				// 62
+	"ADF",				// 63
 );
 
 
@@ -300,6 +304,8 @@ $lang[3] = array(
 	"Delete",			// 59
 	"scan_",			// 60
 	"Lähde",			// 61
+	"Flatbad",				// 62
+	"ADF",				// 63
 );
 
 
@@ -368,7 +374,9 @@ $lang[4] = array(
 	"Download",			// 58
 	"Delete",			// 59
 	"scan_",			// 60
-	"Источник"			// 61
+	"Источник",			// 61
+	"Flatbad",				// 62
+	"ADF",				// 63
 );
 
 
@@ -438,6 +446,8 @@ $lang[5] = array(
 	"Delete",			// 59
 	"scan_",			// 60
 	"Джерело",			// 61
+	"Flatbad",				// 62
+	"ADF",				// 63
 );
 
 
@@ -510,6 +520,8 @@ $lang[6] = array(
 	"Delete",			// 59
 	"scan_",			// 60
 	"Source",			// 61
+	"Flatbad",				// 62
+	"ADF",				// 63
 );
 
 
@@ -579,6 +591,8 @@ $lang[7] = array(
 	"verwijderen",		// 59
 	"scannen_",			// 60
 	"Bron",				// 61
+	"Flatbad",				// 62
+	"ADF",				// 63
 );
 
 ////////////////////////////////////////////////////////////////////////
@@ -647,6 +661,76 @@ $lang[8] = array(
 	"Smazat",			// 59
 	"scan_",			// 60
 	"Zdroj",			// 61
+	"Flatbad",				// 62
+	"ADF",				// 63
 );
+////////////////////////////////////////////////////////////////////////
+// 9 = Italiano
 
+$lang[9] = array(
+    "Area di scansione",           // 0
+		"Sinistra",                // 1
+		"In alto",                 // 2
+		"Larghezza",               // 3
+		"Altezza",              // 4
+		"mm",                  // 5
+    "dpi",                 // 6
+    "%",                   // 7
+		"Sconosciuto",             // 8
+		"Opzioni di scansione",        // 9
+		"Formato file",         // 10
+		"avviamento del download.. attendere", // 11
+    "Vuoi veramente eliminare i file selezionati? Questa operazione non può essere annullata!", // 12
+    "C'è stato un errore nello scaricamento dei files.", // 13
+		"Modalità",                // 14
+		"24 bit colore",        // 15
+		"Scala di grigi",           // 16
+		"Monocromatico",          // 17
+		"Risoluzione",          // 18
+		array("it", "it_IT", "it_IT.UTF-8", "Italian_Italy", "Italia"), // 19
+		"Italiano",             // 20
+		"Scanner",      // 21
+		"Luminosità",          // 22
+		"Contrasto",            // 23
+		"Anteprima",             // 24
+		"Reset",               // 25
+		"Pulisci",               // 26
+		"Tutto",                 // 27
+    "Niente",                // 28
+    "Documenti",           // 29
+    "Immagini",              // 30
+    "Altro",               // 31
+		"ERRORE",               // 32
+		"Non è stato identificato nessuno scanner.<br>Se lo scanner è presente, verificare che sia correttamente collegato, acceso e che venga identificato dal comando sane-find-scanner (se appropriato).<br>Si prega di leggere la documentazione allegata al software (README, FAQ, manpages).", // 33
+		"riprova",           // 34
+		"Click destro per salvare", // 35
+		"CHIUDI",               // 36
+		"Aiuto",                // 37
+		"Extra",               // 38
+		"nessun comando per la scansione",     // 39
+		"Dimensione pagina",           // 40
+		"Nome File",           // 41
+		"Scansiona",              // 42
+		"Documento PDF",        // 43
+		"Immagine JPEG",          // 44
+    "Immagine PNM",           // 45
+		"Immagine TIFF",          // 46
+    "Immagine BMP",           // 47
+    "Immagine PNG",           // 48
+    "Documento TXT",        // 49
+    "Scansionare un'altra pagina?",  // 50
+    "Nome file",            // 51
+    "Tipo",                // 52
+    "Dimensione",                // 53
+    "Data modifica",       // 54
+    "file",                // 55
+    "Seleziona file",         // 56
+    "Personalizzata",         // 57
+    "Scarica",            // 58
+    "Elimina",              // 59
+	"scan_",               // 60
+	"Sorgente",            // 61
+	"Piano",				// 62
+	"Vassoio automatico",	// 63
+);
 ?>
