@@ -1,6 +1,7 @@
 <?php
 $lang_error=$lang[$lang_id][32];
 $error_input=0;
+$scan_id=sprintf("%'.06d",rand(1,1000000));
 
 function scan_error(&$scan_output, &$error_input, $lang_error) {
 	$scan_output="!!!!!!!! ".$lang_error." !!!!!!!!";
@@ -96,9 +97,9 @@ if ($do_source) {
 	$cmd_source=" --source ".$source;
 	if (($source == 'ADF') && ($action_save)) {
 		if ($format == "txt") {
-			$cmd_source=$cmd_source." --batch='{$temp_dir}out%04d.pnm'";
+			$cmd_source=$cmd_source." --batch='{$temp_dir}out_".$scan_id."_%d.pnm' --batch-start=10";
 		}else{
-			$cmd_source=$cmd_source." --format=tiff --batch='{$temp_dir}out%04d.tif'";
+			$cmd_source=$cmd_source." --format=tiff --batch='{$temp_dir}out_".$scan_id."_%d.tif' --batch-start=10";
 		}
 	}
 }
@@ -132,7 +133,7 @@ if ($error_input == 0){
 			$cmd_device = $cmd_scan." > '$file_save'";
 		}
 		if ( ($format == "tif") && ($source =="ADF")){
-			$cmd_device = $cmd_scan." && {$CONVERT} '{$temp_dir}out*.tif' -compress jpeg -quality 90 -density {$resolution} '$file_save'";
+			$cmd_device = $cmd_scan." && {$CONVERT} '{$temp_dir}out_{$scan_id}_*.tif' -compress jpeg -quality 90 -density {$resolution} '$file_save'";
 		}elseif ($format == "tif") {
 			$cmd_device = $cmd_scan." | {$PNMTOTIFF} > '$file_save'";
 		}
@@ -149,7 +150,7 @@ if ($error_input == 0){
 			convert: unable to read image data `-' @ error/pnm.c/ReadPNMImage/766.
 			convert: no images defined `pdf:-' @ error/convert.c/ConvertImageCommand/3044.
 			*/
-			$cmd_device = $cmd_scan." && {$CONVERT} '{$temp_dir}out*.tif' -compress jpeg -quality 90 -density {$resolution} pdf:- > '$file_save'";
+			$cmd_device = $cmd_scan." && {$CONVERT} '{$temp_dir}out_{$scan_id}_*.tif' -compress jpeg -quality 90 -density {$resolution} pdf:- > '$file_save'";
 		}elseif ($format == "pdf"){
 			//$cmd_device = $cmd_scan." | {$CONVERT} pnm:- -compress jpeg -quality 100 -density {$resolution} pdf:- > \"".$file_save."\"";
 			/*
