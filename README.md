@@ -35,7 +35,7 @@ The following programs must succeed, because phpSANE is based on them.
 
 ## Apache configuration
 `  <Location /phpsane>`  
-`    DirectoryIndex phpsane.php`  
+`    DirectoryIndex index.php`  
 `    Require group Admins Users Faktura`  
 `   </Location>`
 

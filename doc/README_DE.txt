@@ -36,7 +36,7 @@ Voraussetzungen:
 Installation:
 ^^^^^^^^^^^^^
 Kopieren Sie einfach das phpSANE-Verzeichnis in Ihr www-root Verzeichnis.
-Dann können Sie durch Öffnen der phpsane.php in Ihrem Web-Browser scannen.
+Dann können Sie durch Öffnen der index.php in Ihrem Web-Browser scannen.
 
 
 ------------------------------------------------------------------------
@@ -104,7 +104,7 @@ auf mein internes Netzwerk?
 A: In httpd.conf :-
 
 <Directory "WWW_PHPSANE_DIR/">
-    DirectoryIndex phpsane.php
+    DirectoryIndex index.php
     Order Deny,Allow
     Deny from all
     Allow from 127.0.0.0/8

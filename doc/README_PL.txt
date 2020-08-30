@@ -39,7 +39,7 @@ Requirements:
 Installation:
 ^^^^^^^^^^^^^
 Just copy the phpSANE-directory into your www-root.
-Then you can scan by opening phpsane.php in your web-browser.
+Then you can scan by opening index.php in your web-browser.
 
 
 ------------------------------------------------------------------------
@@ -106,7 +106,7 @@ internal network only ?
 A: in httpd.conf :-
 
 <Directory "WWW_PHPSANE_DIR/">
-    DirectoryIndex phpsane.php
+    DirectoryIndex index.php
     Order Deny,Allow
     Deny from all
     Allow from 127.0.0.0/8
