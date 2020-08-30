@@ -39,10 +39,10 @@ The following programs must succeed, because phpSANE is based on them.
 `    Require group Admins Users Faktura`  
 `   </Location>`
 
-## For Fedora User
-on a fresh install, you need to install "netpbm-progs" :
+## For Fedora User (fc32)
+On a fresh install, you need to install "netpbm-progs", "gocr", "ImageMagick" and "poppler-utils" :
 
-`dnf install netpbm-progs`
+`dnf install gocr netpbm-progs poppler-utils ImageMagick`
 
 ## OPTIONAL: 
 ### SELinux
