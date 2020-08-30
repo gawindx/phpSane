@@ -1,9 +1,11 @@
 <?php
 /* phpSANE
-// Version: 0.8.1
+// Version: 0.8.2
 // John Walsh <john.walsh@mini-net.co.uk>
 // Wojciech Bronisz <wojtek@bronisz.eu>
 // David Fröhlich <?>
+// Gawindx <decauxnico@gmail.com>
+// moraumereu <?>
 */
 
 include("incl/functions.php");
