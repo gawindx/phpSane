@@ -39,6 +39,11 @@ The following programs must succeed, because phpSANE is based on them.
 `    Require group Admins Users Faktura`  
 `   </Location>`
 
+## For Fedora User
+on a fresh install, you need to install "netpbm-progs" :
+
+`dnf install netpbm-progs`
+
 ## OPTIONAL: 
 ### SELinux
 
