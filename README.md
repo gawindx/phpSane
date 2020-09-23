@@ -106,6 +106,15 @@ setsebool -P httpd_dbus_avahi 1
 setsebool -P httpd_execmem 1
 ```
 
+### Recalcitrant SeLinux
+I have personally come across a particular case where it was not possible to get phpSane to work properly with SeLinux enabled (Enforcing).
+The only solution that worked was to apply a specific context to scanimage so that it stops crashing during execution (crashed in __pthread_mutex_lock ()).
+
+```
+semanage fcontext -m -t httpd_sys_script_exec_t "/usr/bin/scanimage"
+restorecon -R -v /usr/bin/scanimage
+```
+This change of context allowed scanimage to accept being executed by httpd whether SeLinux was in Permissive or Enforcing mode (this problem only occurred when SeLinux was in Enforcing mode).
 
 ### devfs.rules for jails
 Of course you'll ned to adjust the device name to match the USB port your scanner uses.
