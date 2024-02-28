@@ -19,7 +19,9 @@ function debug2log($dbg_msg) {
 		$dbg_bt = debug_backtrace();
 		$caller = array_shift($dbg_bt);
 		//$caller = "test";
-		$dbg_msg = "[".$caller."]: ".$dbg_msg." .\n";
+		$php_source = basename($caller["file"]);
+		$php_line = $caller["line"];
+		$dbg_msg = "[".$php_source.":".$php_line."]: ".$dbg_msg.".\n";
 		$log_file = fopen($log_fname, "a");
 		fwrite($log_file, $dbg_msg);
 		fclose($log_file);

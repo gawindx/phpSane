@@ -284,11 +284,12 @@ if ($do_test_mode) {
 	$sane_result = "device `plustek:libusb:004:002' is a Plustek OpticPro U24 flatbed scanner";
 } else {
 	$sane_cmd = $SCAN_NET_SETUP . $SCANIMAGE . " --list-devices | grep 'device' | grep -e '\(scanner\|hpaio\|multi-function\)'";
-	$sane_cmd = $SCAN_NET_SETUP . $SCANIMAGE . " --list-devices | grep 'device'";
-	$sane_result = exec($sane_cmd);
-	debug2log($sane_cmd);
-	$sane_result;
+	$sane_result = shell_exec($sane_cmd);
+	//Keep only first (local) device. See after for multiple scanner support
 	debug2log($sane_result);
+	$sane_result = preg_split('#\r?\n#', $sane_result, 2)[0];
+	debug2log($sane_result);
+	debug2log($sane_cmd);
 	unset($sane_cmd);
 }
 
@@ -339,11 +340,10 @@ if($scanner_ok) {
 		// build configuration from scanimage output
 		// scanimage call and gather output
 		$sane_cmd = $SCANIMAGE . " -h -d$scanner";
-		$sane_result = `$sane_cmd`;
-		//debug2log(posix_getuid()."\n".$sane_result);
-		//posix_setuid(0);
+		debug2log($sane_cmd);
 		//$sane_result = `$sane_cmd`;
-		//debug2log(posix_getuid()."\n".$sane_result);
+		$sane_result = shell_exec($sane_cmd);
+		debug2log($sane_result);
 		if ($do_test_mode) {
 			$sane_result = "	 --resolution 50..2450dpi [75]\n	 --mode Lineart|Color|Gray [Color]\n	 --contrast 0..100 [50]\n	 --brightness -100..100 [0]\n	 --source Flatbed|ADF [Flatbed]";
 		}
@@ -373,6 +373,7 @@ if($scanner_ok) {
 			unset($brightness_line);
 		}
 		unset($sane_result_brightness);
+		debug2log(($brightness_supported)?"Brightness Ok":"Brigthness NOk");
 		////////
 		// contrast
 		$contrast_supported = false;
@@ -396,32 +397,42 @@ if($scanner_ok) {
 			unset($contrast_line);
 		}
 		unset($sane_result_contrast);
+		debug2log(($brightness_supported)?"contrast Ok":"contrast NOk");
 		////////
 		// modes
 		$sane_result_mode = preg_grep('/--mode /', $sane_result_arr);
 		$sane_result_mode = end($sane_result_mode);
+		debug2log($sane_result_mode);
 		$modes = preg_replace('/^.*--mode ([a-z|]*)[ \t].*$/iU','$1', $sane_result_mode);
 		$mode_list = explode('|', $modes);
 
-		preg_match("/\[(.*?)\]/", $sane_result_mode, $mode_default_array);
+		preg_match("/\s\[(.*)\]+$/", $sane_result_mode, $mode_default_array);
 		$mode_default = $mode_default_array[1];
 		unset($sane_result_mode);
 		unset($mode_default_array);
+		debug2log(implode('|',$mode_list));
+		debug2log($mode_default);
 		////////
 		// resolutions
 		$sane_result_reso = preg_grep('/--resolution /', $sane_result_arr);
 		$sane_result_reso = end($sane_result_reso);
+		debug2log($sane_result_reso);
 		// get default resolution
 		preg_match("/\[(.*?)\]/", $sane_result_reso, $resolution_default_array);
 		$resolution_default = $resolution_default_array[1];
 		$start = strpos($sane_result_reso, "n") + 2;
 		$length = strpos($sane_result_reso, "dpi") - $start;
 		$list = "" . substr($sane_result_reso, $start,$length) . "";
+		debug2log($list);
+		debug2log($resolution_default);
 		////////
 		// source
 		$sane_result_source = preg_grep('/--source /', $sane_result_arr);
 		$sane_result_source = end($sane_result_source);
-		$sources = preg_replace('/^.*--source ([a-z|]*)[ \t].*$/iU','$1', $sane_result_source);
+		debug2log($sane_result_source);
+		$sources = preg_replace('/^.*--source (.*) \[.*\]$/iU','$1', $sane_result_source);
+		debug2log($sources);
+
 		if(strpos($sane_result_source, 'inactive') === false) {
 			$source_supported = true;
 			$source_list = explode('|', $sources);
@@ -429,6 +440,8 @@ if($scanner_ok) {
 			preg_match("/\[(.*?)\]/", $sane_result_source, $source_default_array);
 			$source_default = $source_default_array[1];
 		}
+		debug2log($source_default);
+		
 		unset($sane_result_source);
 		unset($source_default_array);
 		////////
@@ -479,12 +492,12 @@ if($scanner_ok) {
 		unset($length);
 		////////
 		// save scanner configuration
-		save_scanner_config($scanner_name,
+		/*save_scanner_config($scanner_name,
 						$mode_list, $mode_default,
 						$resolution_list, $resolution_default,
 						$brightness_supported, $brightness_default, $brightness_minimum, $brightness_maximum,
 						$contrast_supported, $contrast_default, $contrast_minimum, $contrast_maximum,
-						$source_supported, $source_list, $source_default);
+						$source_supported, $source_list, $source_default);*/
 	}
 
 	if($resolution == -1 || array_search($resolution_default, $resolution_list) === false) {
