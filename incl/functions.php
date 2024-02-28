@@ -8,6 +8,24 @@ function path2url($file, $vname_url='' , $Protocol='https://') {
 }
 // ---------------------------------------------------------------------
 
+// ---------------------------------------------------------------------
+// Added by Gawindx to convert filesystems path to correct url
+
+function debug2log($dbg_msg) {
+	global $log_debug, $log_fname;
+
+	if($log_debug)
+	{
+		$dbg_bt = debug_backtrace();
+		$caller = array_shift($dbg_bt);
+		//$caller = "test";
+		$dbg_msg = "[".$caller."]: ".$dbg_msg." .\n";
+		$log_file = fopen($log_fname, "a");
+		fwrite($log_file, $dbg_msg);
+		fclose($log_file);
+		//error_log($dbg_msg);
+	}
+}
 
 // ---------------------------------------------------------------------
 function add_page_size($page_name, $page_x, $page_y) {

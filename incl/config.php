@@ -1,6 +1,12 @@
 <?php
 // CONFIG --------------------------------------------------------------
 
+$log_debug			= true;
+$log_fname			= "./tmp/dbg.txt";				// Debug File
+
+//ini_set('log_errors', TRUE);
+//ini_set('error_log', $log_fname);
+
 $temp_dir			= "./tmp/";					// temporary directory for storing preview files
 $save_dir			= "./output/";				// destination directory for scanned files
 $scanner_dir		= "./scanners/";			// destination directory for storing and reading scanner configuration files
@@ -18,6 +24,11 @@ if (!is_dir($save_dir)){
 if (!is_dir($scanner_dir)){
 	mkdir($scanner_dir);
 }
+//Create empty log file.
+$tmpfile = fopen($log_fname, "w");
+fclose($tmpfile);
+
+if($log_debug) debug2log("Log Debug Enabled!");
 // set up a string to be prepended to the scanimage command, so that
 // scanimage looks for devices at the ip making the request
 // $SCAN_NET_SETUP = 'export SANE_NET_HOSTS='.$_SERVER['REMOTE_ADDR'].' && ';
@@ -145,11 +156,23 @@ else if(stripos(exec('uname -a'), 'synology') !== FALSE) {
 	$CONVERT	= "/opt/bin/convert";
 	$IDENTIFY	= "/opt/bin/identify";
 }
-if(!`ls $GOCR`) $do_format_txt = false; //disable OCR when not available
+
+if(!`ls $GOCR`) {
+	$do_format_txt = false; //disable OCR when not available
+	debug2log("OCR/txt Disabled");
+}
+if(!(`ls $CONVERT` && `ls $IDENTIFY` && `$IDENTIFY -list Format | grep -i pdf`)) {
+	$do_format_pdf = false; //disable PDF when not available
+	debug2log("PDF Disabled");
+}
+if(!`ls $PDFUNITE`) {
+	$do_append_pdf = false; //disable PDF books when merge tool is not available
+	debug2log("PDF Books Disabled");
+}
+
+/*if(!`ls $GOCR`) $do_format_txt = false; //disable OCR when not available
 if(!(`ls $CONVERT` && `ls $IDENTIFY` && `$IDENTIFY -list Format | grep -i pdf`)) $do_format_pdf = false; //disable PDF when not available
-if(!`ls $PDFUNITE`) $do_append_pdf = false; //disable PDF books when merge tool is not available
-
-
+if(!`ls $PDFUNITE`) $do_append_pdf = false; //disable PDF books when merge tool is not available*/
 
 $action_clear=0;
 $action_clean_tmp=0;
@@ -261,8 +284,11 @@ if ($do_test_mode) {
 	$sane_result = "device `plustek:libusb:004:002' is a Plustek OpticPro U24 flatbed scanner";
 } else {
 	$sane_cmd = $SCAN_NET_SETUP . $SCANIMAGE . " --list-devices | grep 'device' | grep -e '\(scanner\|hpaio\|multi-function\)'";
+	$sane_cmd = $SCAN_NET_SETUP . $SCANIMAGE . " --list-devices | grep 'device'";
 	$sane_result = exec($sane_cmd);
+	debug2log($sane_cmd);
 	$sane_result;
+	debug2log($sane_result);
 	unset($sane_cmd);
 }
 
@@ -270,6 +296,7 @@ if ($do_test_mode) {
 $start = strpos($sane_result, "`") + 1;
 $length = strpos($sane_result, "'") - $start;
 $scanner = "\"".substr($sane_result, $start, $length)."\"";
+debug2log($scanner);
 unset($start);
 unset($length);
 if ((strlen($scanner) > 2) || $do_test_mode) {
@@ -279,11 +306,13 @@ $start = strpos($sane_result, "is a ") + 5;
 $length = strlen($sane_result) - $start;
 $scanner_name = str_replace("_", " ", substr($sane_result, $start, $length));
 $scan_output = $scanner_name;
+debug2log($scanner_name);
 unset($start);
 unset($length);
 unset($sane_result);
 
 if($scanner_ok) {
+	debug2log("Scanner Ok");
 	$scanner_known = scanner_known($scanner_name);
 	// allowed resolutions
 	if($scanner_known) {
@@ -306,10 +335,15 @@ if($scanner_ok) {
 		$source_list = get_scanner_source_options($scanner_name);
 		$source_default = get_scanner_source_default($scanner_name);
 	} else {
+		debug2log("Scanner Unknown");
 		// build configuration from scanimage output
 		// scanimage call and gather output
 		$sane_cmd = $SCANIMAGE . " -h -d$scanner";
 		$sane_result = `$sane_cmd`;
+		//debug2log(posix_getuid()."\n".$sane_result);
+		//posix_setuid(0);
+		//$sane_result = `$sane_cmd`;
+		//debug2log(posix_getuid()."\n".$sane_result);
 		if ($do_test_mode) {
 			$sane_result = "	 --resolution 50..2450dpi [75]\n	 --mode Lineart|Color|Gray [Color]\n	 --contrast 0..100 [50]\n	 --brightness -100..100 [0]\n	 --source Flatbed|ADF [Flatbed]";
 		}

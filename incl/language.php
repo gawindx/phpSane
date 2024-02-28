@@ -478,7 +478,7 @@ $lang[6] = array(
 	"Monochrome",		// 17
 	"R&#233;solution DPI",// 18
 	array("fr", "fr_FR", "fr_FR.UTF-8", "French_France", "French"),// 19
-	"FranÃ§ais",			// 20
+	"Français",			// 20
 	"Scanner",			// 21
 	"Luminosit&#233;",	// 22
 	"Contraste",		// 23
