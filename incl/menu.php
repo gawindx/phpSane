@@ -55,6 +55,13 @@ echo "
 		<td>".$lang[$lang_id][10]."</td>
 		<td class='value_column'>
 			<select id='format' name='format'>\n";
+			debug2log(($do_format_jpg)?"jpg OK":"jpg NOK");
+			debug2log(($do_format_pnm)?"pnm OK":"pnm NOK");
+			debug2log(($do_format_tif)?"tif OK":"tif NOK");
+			debug2log(($do_format_png)?"png OK":"png NOK");
+			debug2log(($do_format_bmp)?"bmp OK":"bmp NOK");
+			debug2log(($do_format_pdf)?"pdf OK":"pdf NOK");
+			debug2log(($do_format_txt)?"txt OK":"txt NOK");
 if($do_format_jpg) { echo "				<option "; if($format=="jpg") echo "selected "; echo "value='jpg' data-image='images/filetype_jpg.png'>".$lang[$lang_id][44]."</option>\n"; }
 if($do_format_pnm) { echo "				<option "; if($format=="pnm") echo "selected "; echo "value='pnm' data-image='images/filetype_pnm.png'>".$lang[$lang_id][45]."</option>\n"; }
 if($do_format_tif) { echo "				<option "; if($format=="tif") echo "selected "; echo "value='tif' data-image='images/filetype_tif.png'>".$lang[$lang_id][46]."</option>\n"; }
@@ -70,7 +77,17 @@ echo "			</select>
 		<td>".$lang[$lang_id][14]."</td>
 		<td class='value_column'>		
 			<select name='mode'>\n";
-$mode_color_index = array_search('color', array_map('strtolower', $mode_list));;
+//$mode_color_index = array_search('color', array_map('strtolower', $mode_list));
+$tmp_mode_list = $mode_list;
+foreach($tmp_mode_list as $key => &$value){$value = strtolower($value);}
+$mode_color_index = in_array('color', $tmp_mode_list);
+debug2log(print_r($mode_list,true));
+debug2log(print_r($tmp_mode_list,true));
+
+debug2log(implode('@',$mode_list));
+debug2log(implode('@',$tmp_mode_list));
+debug2log(($mode_color_index!==false)?$mode_color_index:"mode color index failed");
+
 if($mode_color_index !== false) {
   echo "				<option"; if(strcasecmp($mode, 'color') == 0) echo " selected"; echo " value='{$mode_list[$mode_color_index]}' data-image='images/mode_color.png'>" . $lang[$lang_id][15]."</option>";
 }

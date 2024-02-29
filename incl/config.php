@@ -403,7 +403,8 @@ if($scanner_ok) {
 		$sane_result_mode = preg_grep('/--mode /', $sane_result_arr);
 		$sane_result_mode = end($sane_result_mode);
 		debug2log($sane_result_mode);
-		$modes = preg_replace('/^.*--mode ([a-z|]*)[ \t].*$/iU','$1', $sane_result_mode);
+		$modes = preg_replace('/^.*--mode (.*) \[.*\]$/iU','$1', $sane_result_mode);
+		debug2log($modes);
 		$mode_list = explode('|', $modes);
 
 		preg_match("/\s\[(.*)\]+$/", $sane_result_mode, $mode_default_array);
@@ -492,12 +493,12 @@ if($scanner_ok) {
 		unset($length);
 		////////
 		// save scanner configuration
-		/*save_scanner_config($scanner_name,
+		save_scanner_config($scanner_name,
 						$mode_list, $mode_default,
 						$resolution_list, $resolution_default,
 						$brightness_supported, $brightness_default, $brightness_minimum, $brightness_maximum,
 						$contrast_supported, $contrast_default, $contrast_minimum, $contrast_maximum,
-						$source_supported, $source_list, $source_default);*/
+						$source_supported, $source_list, $source_default);
 	}
 
 	if($resolution == -1 || array_search($resolution_default, $resolution_list) === false) {
