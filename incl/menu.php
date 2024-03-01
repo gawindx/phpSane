@@ -77,25 +77,55 @@ echo "			</select>
 		<td>".$lang[$lang_id][14]."</td>
 		<td class='value_column'>		
 			<select name='mode'>\n";
-//$mode_color_index = array_search('color', array_map('strtolower', $mode_list));
-$tmp_mode_list = $mode_list;
-foreach($tmp_mode_list as $key => &$value){$value = strtolower($value);}
-$mode_color_index = in_array('color', $tmp_mode_list);
-debug2log(print_r($mode_list,true));
-debug2log(print_r($tmp_mode_list,true));
+
+$mode_color_index = false;
+$count = 0;
+foreach ($mode_list as $key => $value) {
+	debug2log($Key." => ".$value);
+	if (str_contains(strtolower($value), 'color') !== false) {
+		debug2log("index color found at ".$count);
+		$mode_color_index = $count;
+		break;
+	}
+	$count++;
+}
+debug2log($mode_color_index);
 
 debug2log(implode('@',$mode_list));
-debug2log(implode('@',$tmp_mode_list));
 debug2log(($mode_color_index!==false)?$mode_color_index:"mode color index failed");
 
 if($mode_color_index !== false) {
   echo "				<option"; if(strcasecmp($mode, 'color') == 0) echo " selected"; echo " value='{$mode_list[$mode_color_index]}' data-image='images/mode_color.png'>" . $lang[$lang_id][15]."</option>";
 }
-$mode_gray_index = array_search('gray', array_map('strtolower', $mode_list));
+
+//$mode_gray_index = array_search('gray', array_map('strtolower', $mode_list));
+$mode_gray_index = false;
+$count = 0;
+foreach ($mode_list as $key => $value) {
+	debug2log($Key." => ".$value);
+	if (str_contains(strtolower($value), 'gray') !== false) {
+		debug2log("index gray found at ".$count);
+		$mode_gray_index = $count;
+		break;
+	}
+	$count++;
+}
 if($mode_gray_index !== false) {
   echo "				<option"; if(strcasecmp($mode, 'gray') == 0) echo " selected"; echo " value='{$mode_list[$mode_gray_index]}' data-image='images/mode_gray.png'>" . $lang[$lang_id][16]."</option>";
 }
-$mode_lineart_index = array_search('lineart', array_map('strtolower', $mode_list));
+
+//$mode_lineart_index = array_search('lineart', array_map('strtolower', $mode_list));
+$mode_lineart_index = false;
+$count = 0;
+foreach ($mode_list as $key => $value) {
+	debug2log($Key." => ".$value);
+	if ((str_contains(strtolower($value), 'lineart') !== false) or (str_contains(strtolower($value), 'black') !== false)){
+		debug2log("index kineart found at ".$count);
+		$mode_lineart_index = $count;
+		break;
+	}
+	$count++;
+}
 if($mode_lineart_index !== false) {
   echo "				<option"; if(strcasecmp($mode, 'lineart') == 0) echo " selected"; echo " value='{$mode_list[$mode_lineart_index]}' data-image='images/mode_lineart.png'>" . $lang[$lang_id][17]."</option>";
 }

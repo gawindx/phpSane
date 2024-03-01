@@ -69,7 +69,7 @@ valid_or_dead('geometry_y', 'numeric');
 // lang_id
 valid_or_dead('lang_id', 'numeric');
 // mode
-valid_or_dead('mode', 'regex', '/^[a-z]+$/i');
+//valid_or_dead('mode', 'regex', '/^[a-z]+$/i');
 // file_name
 valid_or_dead('file_name', 'filepath');
 // preview_images

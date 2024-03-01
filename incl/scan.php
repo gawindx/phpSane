@@ -62,7 +62,7 @@ if (($height >= 0) && $height <=$PREVIEW_HEIGHT_MM) {
 	scan_error($scan_output, $error_input, $lang_error);
 }
 
-$cmd_mode=" --mode \"".$mode."\"";
+$cmd_mode=' --mode "'.$mode.'"';
 
 $cmd_resolution="";
 if (($resolution >= $resolution_min) && ($resolution <= $resolution_max)) {
@@ -94,8 +94,8 @@ if ($do_contrast) {
 
 $cmd_source="";
 if ($do_source) {
-	$cmd_source=" --source ".$source;
-	if (($source == 'ADF') && ($action_save)) {
+	$cmd_source=' --source "'.$source.'"';
+	if ( (($source == 'ADF') || (str_contains($source,'Auto'))) && ($action_save)) {
 		if ($format == "txt") {
 			$cmd_source=$cmd_source." --batch='{$temp_dir}out_".$scan_id."_%d.pnm' --batch-start=10";
 		}else{
@@ -127,7 +127,7 @@ if ($error_input == 0){
 		$file_save_image = 1;
 
 		if ($format == "jpg") {
-			$cmd_device = $cmd_scan." | {$PNMTOJPEG} --quality=100 > '$file_save'";
+			$cmd_device = $cmd_scan." | {$PNMTOJPEG} --quality=100 -o '$file_save'";
 		}
 		if ($format == "pnm") {
 			$cmd_device = $cmd_scan." > '$file_save'";
