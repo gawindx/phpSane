@@ -1,6 +1,0 @@
-<ifModule mod_headers.c>
-  #one year
-  <FilesMatch ".(css)$">
-      Header set Cache-Control "max-age=29030400"
-  </FilesMatch>
-</ifModule>
