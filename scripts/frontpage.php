@@ -19,7 +19,7 @@
 	<meta name='robots' content='noindex'>
 	<meta http-equiv='content-type' content='text/html; charset=UTF-8'>
 
-	<title>phpSANE 1.0.0</title>
+	<title><?php echo($phpsane_version);?></title>
 	<link rel='icon' href='favicon.ico' type='image/png' />
 	<link rel='shortcut icon' href='favicon.ico' type='image/png' />
     

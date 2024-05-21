@@ -1,6 +1,6 @@
 <?php
 /* phpSANE
-// Version: 1.0.0
+// Version: 0.99.0-a1
 // Gawindx <decauxnico@gmail.com>
 //
 // 0.x Branch developer's :
@@ -9,6 +9,7 @@
 // David Fröhlich <?>
 // moraumereu <?>
 */
+$phpsane_version = '0.99.0-a1';
 
 include('scripts/class.php');
 
