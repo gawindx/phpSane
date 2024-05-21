@@ -147,7 +147,7 @@
                                         
                                     }
 
-                                    if ($argumentObject['src_type'] =="adf") {
+                                    if ($argumentObject['src_type'] == 'ADF') {
                                         $src_addon = " --format=tiff --batch='{$tmp_file}%d.tif' --batch-start=10";
                                         $output_arg = " && {$EP['CONVERT']} '{$tmp_file}*.tif' -compress jpeg -quality 90 -density {$resolution}{$define_values} pdf:- > '$filename'";
                                     }else{
@@ -155,7 +155,7 @@
                                     }
                                     break;
                                 case 'txt':
-                                    if ($argumentObject['src_type'] =="adf") {
+                                    if ($argumentObject['src_type'] == 'ADF') {
                                         $src_addon = " --batch='{$tmp_file}%d.pnm' --batch-start=10";
                                         $output_arg = " && {$EP['CONVERT']} '{$tmp_file}*.pnm' '{$tmp_file}single.pnm' | {$EP['GOCR']} '{$tmp_file}single.pnm' > '$filename'";
                                     }else{
@@ -169,7 +169,7 @@
                                     $output_arg = " | {$EP['PNMTOBMP']} > '$filename'";
                                     break;
                                 case 'tif':
-                                    if ($argumentObject['src_type'] == 'adf') {
+                                    if ($argumentObject['src_type'] == 'ADF') {
                                         $src_addon = " --format=tiff --batch='{$tmp_file}%d.tif' --batch-start=10";
                                         $output_arg = " && {$EP['CONVERT']} '{$tmp_file}*.tif' -compress jpeg -quality 90 -density {$resolution} '$filename'";
                                     }else{
@@ -505,7 +505,7 @@
                     if (preg_match('/flatbed/i', $DeviceSource)) {
                         $result['sources'][$DeviceSource] = 'Flatbed';
                     }else if (preg_match('/auto|feed|adf/i', $DeviceSource)) {
-                        $result['sources'][$DeviceSource] = 'ADF';
+                        $result['sources'][$DeviceSource] = 'adf';
                     }
                 }
                 unset($result_source);

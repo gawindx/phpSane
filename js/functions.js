@@ -715,6 +715,7 @@ function UpdateDeviceGeometry(Device_index) {
 
 // initialize pagesize Select
 function UpdatePageSize() {
+	// Todo : add US size depending language and optional parameters
 	var PSize_List = {
 		'A0': {'h': 1189, 'w': 841},
 		'A1': {'h': 841, 'w': 594},
@@ -991,7 +992,10 @@ function getScan() {
 	})();
 	dataObject.mode = '' + ($('#mode_select').msDropdown().data('dd')).get('selectedText') + '';
 	dataObject.source = '' + ($('#source_select').msDropdown().data('dd')).get('selectedText') + '';
-	dataObject.src_type = '' + ($('#source_select').msDropdown().data('dd')).get('value') + '';
+
+	var src_select_type = ($('#source_select').msDropdown().data('dd')).get('selectedText');
+	dataObject.src_type = '' + device_cap.Sources.sources[src_select_type] + '';
+	
 	dataObject.file_format = '' + ($('#format_select').msDropdown().data('dd')).get('value') + '';
 	dataObject.filename = '' + $('#scan_filename').val() + '';
 

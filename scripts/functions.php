@@ -322,9 +322,10 @@ function createThumbnail($filename, $thumbname) {
 	debug2log('Convert with args: ' . print_r($thumb_args, true));
 	try{
 		debug2log('Prepare Cmd');
-	$thumb_cmd =$thumb_args[0] . ' -sample "' . $thumb_args[1] . 'x' . $thumb_args[2] . '" "'. $thumb_args[3] . '" "' . $thumb_args[4] . '"';
+	$thumb_cmd = $thumb_args[0] . ' -sample "' . $thumb_args[1] . 'x' . $thumb_args[2] . '" "'. $thumb_args[3] . '[0]" "' . $thumb_args[4] . '"';
 	debug2log('Prepare Cmd Ok');
-	
+	debug2log($thumb_cmd);
+
 	}catch(Exception $e) {
 		debug2log('Exception on thumbnail :'.$e->getMessage());
 		$thumb_cmd = 'empty';
