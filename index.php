@@ -74,28 +74,4 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 	include('scripts/frontpage.php');
 }
 
-
-//if (empty($_POST['data']) and empty($_REQUEST['data'])) {
-
-/*}else{
-    if ( not empty($_REQUEST['data']) ) {
-    	echo "Get ".{$_REQUEST['data']['method']}."\n";
-    }elsif ( not empty($_POST['data']) ) {
-    	echo "Post ".{$_POST['data']['method']}."\n";
-    }
-}*/
-
-/*echo "Get Req :\n";
-print_r($_GET, true);
-echo "Post Req :\n";
-print_r($_POST, true);
-
-if ( not empty($_GET['data']) ) {
- 	echo "Get ".$_GET['data']['method']."\n";
-}else{
-   	if ( not empty($_POST['data']) ) {
-   		echo "Post ".$_POST['data']['method']."\n";
-   	}
-}*/
-
 ?>
