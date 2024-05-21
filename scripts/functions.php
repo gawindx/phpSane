@@ -112,10 +112,14 @@ function get_scan($scan_args) {
 			$scan_args['filename'] = basename($scan_args['filename'], '.' . (pathinfo($scan_args['filename']))['extension']);
 			$scan_args['filename'] = $Config['path']['save_dir'].$scan_args['filename'];
 		}
-		debug2log('Filename:'.$scan_args['filename']);
 		$scan_args['tmp_file'] = $Config['path']['temp_dir'] .'out_'.substr(md5(microtime()),rand(0,26),5).'_';
+
 		//debug2log('scan args completed');
-		debug2log('Tmp File:'.$scan_args['tmp_file']);
+		$scan_args['im_legacy'] = $Config['IM_legacy_version'];
+		$scan_args['Producer'] = $Config['Producer'];
+		$scan_args['Author'] = $Config['Author'];
+
+		debug2log('Scan Args Array'. print_r($scan_args, true));
 		if($SaneCmd->prepareCmd($scan_args)) {
 			if (!($SaneCmd->run())) {;
 				$response['result'] = 'false';

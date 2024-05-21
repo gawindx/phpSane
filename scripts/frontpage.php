@@ -43,28 +43,41 @@
 
 <header class='container-fluid'>
     <div class='row mb-3'>
-        <div class='col-8 col-md-10'>
+        <div class='col-md-6 col-8'>
             <a href='index.php'>
                 <img src='images/logo.jpg' alt='phpSane' id='logo' class='logo'>
             </a>
         </div>
-        <div class='col-4 col-md-2 text-right'>
+        <div class='col-md-6 col-4 text-right'>
 
-        <div class='dropdown'>
-        <button class='btn btn-primary dropdown-toggle' type='button' id='dropdownSettingsButton' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                <img src='images/btn_preview.png' alt='Lang'>
-                <span data-lang='settings'></span>
-        </button>
-        <div class='dropdown-menu dropdown-menu-end' aria-labelledby='dropdownSettingsButton' id='SettingsButtonMenu'>
-            <table class='table' id='tab_settings'>
-                <tr>
-                    <th data-lang='language'></th>
-                    <td class='value_column' colspan=2>
-                        <select id='language_select' size=1 is='ms-dropdown'>
-                        </select>
-                    </td>
-                </tr>
-            </table>
+            <div class='dropdown'>
+            <button class='btn btn-primary dropdown-toggle' type='button' id='dropdownSettingsButton' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                    <img src='images/btn_preview.png' alt='Lang'>
+                    <span data-lang='settings'></span>
+            </button>
+            <div class='dropdown-menu dropdown-menu-end' aria-labelledby='dropdownSettingsButton' id='SettingsButtonMenu'>
+                <table class='table' id='tab_settings'>
+                    <tr>
+                        <th data-lang='language'></th>
+                        <td class='value_column' colspan=2>
+                            <select id='language_select' size=1 is='ms-dropdown'>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th data-lang='producer'></th>
+                        <td class='value_column'>
+                            <input type='text' name='producer' id='producer' value='phpSane' size='4'>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th data-lang='author'></th>
+                        <td class='value_column'>
+                            <input type='text' name='author' id='author' value='phpSane' size='4'>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 <!--    <nav class='navbar navbar-expand-lg navbar-light bg-light d-md-none'>

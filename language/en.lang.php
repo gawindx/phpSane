@@ -36,6 +36,8 @@ $Languages['en'] = array(
 	'source'				=> 'Source',
 	'settings'				=> 'Settings',
 	'language'				=> 'Language',
+	'producer'				=> 'Producer',
+	'author'				=> 'Author',
 	/*
 	"%",					// 7
 	"Unknown",				// 8

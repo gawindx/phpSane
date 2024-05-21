@@ -131,15 +131,27 @@
                             $filename = $argumentObject['filename'];
                             $tmp_file = $argumentObject['tmp_file'];
                             $resolution = $argumentObject['resolution'];
+                            $Producer = $argumentObject['Producer'];
+                            $Author = $argumentObject['Author'];
 
                             switch ($value){
                                 case 'pdf':
                                     // see for option https://imagemagick.org/script/defines.php
+                                    $define_values = '';
+
+                                    //define value option start with IM7
+                                    if (!$argumentObject['im_legacy']) {
+                                        $define_values = ' -define pdf:Title="' . pathinfo($filename)['filename'] .'" ';
+                                        $define_values .= '-define pdf:Producer="'. $Producer . '" ';
+                                        $define_values .= '-define pdf:Author="'. $Author . '" ';
+                                        
+                                    }
+
                                     if ($argumentObject['src_type'] =="adf") {
                                         $src_addon = " --format=tiff --batch='{$tmp_file}%d.tif' --batch-start=10";
-                                        $output_arg = " && {$EP['CONVERT']} '{$tmp_file}*.tif' -compress jpeg -quality 90 -density {$resolution} -title '$filename' pdf:- > '$filename'";
+                                        $output_arg = " && {$EP['CONVERT']} '{$tmp_file}*.tif' -compress jpeg -quality 90 -density {$resolution}{$define_values} pdf:- > '$filename'";
                                     }else{
-                                        $output_arg = $cmd_scan." | {$EP['CONVERT']} - -compress jpeg -quality 100 -density {$resolution} -title '$filename' pdf:- > '$filename'";
+                                        $output_arg = $cmd_scan." | {$EP['CONVERT']} - -compress jpeg -quality 100 -density {$resolution}{$define_values} pdf:- > '$filename'";
                                     }
                                     break;
                                 case 'txt':

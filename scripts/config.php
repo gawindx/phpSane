@@ -76,6 +76,7 @@ $Do_Format = array(
 	'bmp'	=> true,
 	'png'	=> true,
 );
+
 $query_ocr = 'ls ' . $Config['exe_path']['GOCR'];
 $query_convert = 'ls '. $Config['exe_path']['CONVERT'];
 $query_identity = 'ls '. $Config['exe_path']['IDENTIFY'];
@@ -85,6 +86,20 @@ $query_jpg = 'ls ' . $Config['exe_path']['PNMTOJPEG'];
 $query_tiff = 'ls ' . $Config['exe_path']['PNMTOTIFF'];
 $query_bmp = 'ls ' . $Config['exe_path']['PNMTOBMP'];
 $query_png = 'ls ' . $Config['exe_path']['PNMTOPNG'];
+$query_im_version = $Config['exe_path']['CONVERT'] . ' -version';
+
+$Config['IM_legacy_version'] = true;
+if (0 !== preg_match('/(version|v)?\s*((?:[0-9]+\.?\-?)+)/i', `$query_im_version`, $matches)) {
+	preg_match_all('/(?:[0-9])+/', $matches[0], $IM_version);
+	if ((intval($IM_version[0][0])) >= 7) {
+		$Config['IM_legacy_version'] = false;
+	}else{
+		$Config['IM_legacy_version'] = true;
+	}
+}
+
+$Config['Producer'] = 'phpSane';
+$Config['Author'] = 'phpSane';
 
 if(!`$query_ocr`) {
 	$Do_Format['txt'] = false; //disable OCR when not available
