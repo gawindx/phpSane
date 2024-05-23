@@ -150,11 +150,9 @@ function UpdateFileList() {
 		return;
 	}
 
-	saved_scan = saved_scan.sort((a, b) => {
-		if (a.file_modtime > b.file_modtime) {
-		  return -1;
-		}
-	});
+	saved_scan.sort(function (a, b) {
+			return a.file_modtime - b.file_modtime; 
+		});
 
 	$('#file_list').empty();
 

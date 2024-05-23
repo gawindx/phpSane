@@ -195,7 +195,7 @@ function getFileInfos($filename) {
 		$file_result['file_path'] = $Config['path']['save_dir'].$file_result['file_name'];
 		debug2log('get file path : '.$file_result['file_path']);
 		$file_result['file_size'] = size_readable(filesize($file_result['file_path']));
-		$file_result['file_modtime'] = utf8_encode(strftime('%c', filemtime($file_result['file_path'])));
+		$file_result['file_modtime'] = filemtime($file_result['file_path']);
 		$file_result['file_new'] = $index === 0 && (time() - filemtime($file_result['file_path']) <= 60);
 		$file_result['thumbnail'] = getThumbnail($file_result['file_name']);
 		
