@@ -150,8 +150,8 @@ function UpdateFileList() {
 		return;
 	}
 
-	saved_scan.sort(function (a, b) {
-			return a.file_modtime - b.file_modtime; 
+	saved_scan = saved_scan.sort(function (a, b) {
+			return a.file_modtime < b.file_modtime; 
 		});
 
 	$('#file_list').empty();
