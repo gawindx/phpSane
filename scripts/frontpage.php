@@ -104,8 +104,8 @@
 
     <div class='container' id='phpsane_container'>
         <div class='row'>
-            <div class='col-sm-12 col-md-7 col-lg-4 mt lscape-preview'>
-                <div class='row'>
+            <div class='col-sm-12 col-md-7 col-lg-4 mt lscape-preview' id='preview_column'>
+                <div class='row' id='preview_row'>
                     <div class='col-12 lscape-buttons'>
                         <div class='row' id='tab_menu_buttons'>
                             <div class='col-sm-6 col-sm-pull-6 lscape-button'>
@@ -131,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            <div class='col-sm-0 col-md-5 col-lg-4 d-none d-md-block d-lg-block mt-5 pt-2 lscape-d-none' id='settings_column'>
+            <div class='col-sm-0 col-md-5 col-lg-4 d-none d-md-block d-lg-block pt-2 lscape-d-none' id='settings_column'>
                 <table class='table' id='tab_menu_settings'>
                     <tr>
                         <th data-lang='device'></th>
@@ -243,7 +243,7 @@
             </div>
             <div class='col-sm-0 col-md-12 col-lg-4 d-none d-md-block pt-2 lscape-d-none' id='file_column'>
                 <div class='file-explorer table-responsive'>
-                    <table class='table table-striped table-bordered' id='table-file-list'>
+                    <table class='table table-striped' id='table-file-list'>
                         <thead>
                             <tr>
                                 <th scope='col'> </th>

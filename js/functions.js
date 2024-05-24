@@ -86,6 +86,7 @@ $(document).on('RequestOk', function(){
 $(document).on('UIReady', function(){
 	translate_ui();
 	UpdateLanguage();
+	$('.file-explorer').css('height', $('#preview_row').height() - 20);
 });
 
 // handle error on ajax's request

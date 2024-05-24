@@ -382,12 +382,22 @@ text-align: left;
   border-top: 5px solid #777777;
 }
 
-/*#tab_menu_buttons > li > input + input {
-  margin-left: 1%;
-}*/
-
-/* msdropdown */
-
 .popover {
         background-color: #e2e2e4;
+}
+
+#table-file-list {
+        overflow: auto;
+}
+
+#table-file-list thead {
+        position: -webkit-sticky; /* this is for all Safari (Desktop & iOS), not for Chrome*/
+        position: sticky;
+        top: 0;
+        z-index: 1; /* any positive value, layer order is global*/
+        background: #fff; /* any bg-color to overlap*/
+}
+
+#file_list tr {
+border-style: hidden;
 }
