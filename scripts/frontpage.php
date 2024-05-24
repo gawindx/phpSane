@@ -44,10 +44,10 @@
                     <img src='images/logo.jpg' alt='phpSane' id='logo' class='logo'>
                 </a>
             </div>
-            <div class='col-md-6 col-4 text-right'>
+            <div class='col-md-6 col-4'>
 
                 <div class='dropdown'>
-                <button class='btn btn-primary dropdown-toggle' type='button' id='dropdownSettingsButton' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                <button class='btn btn-primary dropdown-toggle float-end' type='button' id='dropdownSettingsButton' data-bs-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
                         <img src='images/btn_preview.png' alt='Lang'>
                         <span data-lang='settings'></span>
                 </button>
@@ -241,9 +241,9 @@
                     </tr>
                 </table>
             </div>
-            <div class='col-sm-0 col-md-12 col-lg-4 d-none d-md-block mt-5 pt-2 lscape-d-none' id='file_column'>
+            <div class='col-sm-0 col-md-12 col-lg-4 d-none d-md-block pt-2 lscape-d-none' id='file_column'>
                 <div class='file-explorer table-responsive'>
-                    <table class='table table-striped table-bordered'>
+                    <table class='table table-striped table-bordered' id='table-file-list'>
                         <thead>
                             <tr>
                                 <th scope='col'> </th>
