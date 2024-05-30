@@ -76,30 +76,41 @@
                 </div>
             </div>
         </div>
-    <!--    <nav class='navbar navbar-expand-lg navbar-light bg-light d-md-none'>
+        <nav class='navbar navbar-expand-lg navbar-light bg-light d-lg-none'>
             <button class='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNav' aria-controls='navbarNav' aria-expanded='false' aria-label='Toggle navigation'>
-                <span class='navbar-toggler-icon'></span>
+                <span class='navbar-toggler-icon' onclick='openNav()'></span>
             </button>
-            <div class='collapse navbar-collapse' id='navbarNav'>
-                <ul class='navbar-nav'>
-                    <li class='nav-item'>
-                        <button class='nav-link btn btn-primary'>
-                            <img src='images/btn_preview.png' alt='File Icon'> Fichier
-                        </button>
-                    </li>
-                    <li class='nav-item'>
-                        <button class='nav-link btn btn-primary'>
-                            <img src='images/btn_preview.png' alt='Shield Icon'> Bouclier
-                        </button>
-                    </li>
-                    <li class='nav-item ml-auto'>
-                        <button class='nav-link btn btn-primary'>
-                            <img src='images/btn_preview.png' alt='Gear Icon'> Paramètres
-                        </button>
-                    </li>
-                </ul>
+        </nav>
+        <div id='mob-menu' class='overlay d-lg-none mobile-menu'>
+
+            <!-- Button to close the overlay navigation -->
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+            <!-- Overlay content -->
+            <div class="overlay-content">
+
+                <div class="container-fluid">
+
+                    <ul class="nav nav-tabs" id='mobile-tab' role='tablist'>
+                        <li class='nav-item' role='presentation'>
+                            <button class='nav-link active' id="settings-btn" data-bs-toggle="tab" data-bs-target="#settingstab" type="button" role="tab" aria-controls="settingstab" aria-selected="true">Settings</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="files-btn" data-bs-toggle="tab" data-bs-target="#filestab" type="button" role="tab" aria-controls="filestab" aria-selected="false">Files</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id='mobile-tab-content'>
+                        <div class="tab-pane fade show active mobile-menu" id="settingstab" role="tabpanel" aria-labelledby="settings-btn">
+                        </div>
+                        <div class="tab-pane fade mobile-menu" id="filestab" role="tabpanel" aria-labelledby="files-btn">
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-        </nav>-->
+        </div>
     </header>
 
     <div class='container' id='phpsane_container'>
@@ -242,10 +253,10 @@
                 </table>
             </div>
             <div class='col-sm-0 col-md-12 col-lg-4 d-none d-md-block pt-2 lscape-d-none' id='file_column'>
-                <div class='file-explorer table-responsive'>
+                <div class='file-explorer table-responsive' id='file-list-panel'>
                     <table class='table table-striped' id='table-file-list'>
                         <thead>
-                            <tr>
+                            <tr class='files_header'>
                                 <th scope='col'> </th>
                                 <th scope='col' data-lang='file_name'></th>
                                 <th scope='col'> </th>

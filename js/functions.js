@@ -8,6 +8,7 @@ var devices_ok = false;
 var files_ok = false;
 var params_ok = false;
 var languages_ok = false;
+//var viewport_width = 0;
 
 
 //Todo :
@@ -60,6 +61,7 @@ geometry.pxmax_y = getSizePx(geometry.y);
 
 // Start and Initialize msDropDown
 $(document).ready(function() {
+
 	//enable msDropDown on select boxes
 	try {
 		$('body select').msDropdown({reverseMode:true});
@@ -70,6 +72,8 @@ $(document).ready(function() {
 	files_ok = false;
 	params_ok = false;
 	languages_ok = false;
+	//viewport_width = get_viewport();
+
 	// Init phpsane frontend
 	get_all_devices();
 	get_files();
@@ -80,14 +84,72 @@ $(document).ready(function() {
 $(document).on('RequestOk', function(){
 	if (devices_ok && files_ok && params_ok && languages_ok) {
 		$(document).trigger('UIReady');
-	} 
+	}
 });
 
 $(document).on('UIReady', function(){
 	translate_ui();
+	set_navbar();
 	UpdateLanguage();
 	$('.file-explorer').css('height', $('#preview_row').height() - 20);
 });
+
+window.addEventListener('resize', event => {
+	//viewport_width = get_viewport();
+	set_navbar();
+});
+
+// get the display width in bootstrap type
+/*function get_viewport () {
+	// https://stackoverflow.com/a/8876069
+	const width = Math.max(
+	  document.documentElement.clientWidth,
+	  window.innerWidth || 0
+	);
+	if (width <= 576) return 'xs';
+	if (width <= 768) return 'sm';
+	if (width <= 992) return 'md';
+	if (width <= 1200) return 'lg';
+	if (width <= 1400) return 'xl';
+	return 'xxl';
+}*/
+
+// move settings and/or file column to navbar 
+function set_navbar() {
+
+	if( !$('#settings_column').is(':visible') ){
+		// copy settings to mobile menu
+		$('#tab_menu_settings').appendTo('#settingstab');
+	}else{
+		$('#tab_menu_settings').appendTo('#settings_column');
+	}
+
+	if( !$('#file_column').is(':visible') ){
+		// copy files to mobile menu
+		var truc = $('.file_infos').length;
+		$('.file_infos').each( function() {
+			$('#' + this.id).popover('disable');
+		});
+		$('#file-list-panel').appendTo('#filestab');
+
+	}else{
+		$('#file-list-panel').appendTo('#file_column');
+		$('.file_infos').each( function() {
+			$('#' + this.id).popover('enable');
+		});
+	}
+
+}
+
+// Open when someone clicks on the span element
+function openNav() {
+	document.getElementById("mob-menu").style.width = "100%";
+}
+  
+// Close when someone clicks on the "x" symbol inside the overlay
+function closeNav() {
+	document.getElementById("mob-menu").style.width = "0%";
+}
 
 // handle error on ajax's request
 function requestError(xhr,status,msg) {
@@ -159,12 +221,16 @@ function UpdateFileList() {
 
 	$.each(saved_scan, function() {
 		var row_id = this.file_name.toLowerCase().replace(/\s/g, '_').replace(/\./g,'_').replace(/-/g,'_');
-		new_row  = '<tr id="' + row_id + '">';
+		new_row  = '<tr id="file_' + row_id + '" class="file_infos">';
 		new_row += '<th scope="row">';
 		new_row += '<input class="selected_files" type="checkbox" name="selected_files[]" ';
 		new_row += 'value="' + this.file_name + '" title="Select file">';
 		new_row += '</th>';
-		new_row += '<td>';
+		new_row += '<td class="file_thumbnail d-block d-lg-none">';
+		new_row += '<img loading="lazy" class="lazyimg" src ="' + this.thumbnail + '" alt="' + this.file_name + '">';
+		new_row += '<a href="' + this.file_path + '" target="_blank">' + this.file_name+ '</a>';
+		new_row += '</td>';
+		new_row += '<td class="d-none d-lg-block">';
 		new_row += '<img src="' + this.file_icon + '" alt="PDF">';
 		new_row += '<a href="' + this.file_path + '" target="_blank">' + this.file_name+ '</a>';
 		new_row += '</td>';
@@ -173,7 +239,7 @@ function UpdateFileList() {
 		$('#file_list').append(new_row);
 
 		var thumb_html = '<img src="' + this.thumbnail + '" alt="' + this.file_name + '">';
-		$('#' + row_id + '').popover({
+		$('#file_' + row_id + '').popover({
 			html: true,
 			content: thumb_html,
 			container: 'body',

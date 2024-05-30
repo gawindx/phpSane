@@ -9,7 +9,7 @@
 // David Fröhlich <?>
 // moraumereu <?>
 */
-$phpsane_version = '0.99.0-a2';
+$phpsane_version = '0.99.0-a3';
 
 include('scripts/class.php');
 
