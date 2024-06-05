@@ -180,28 +180,28 @@
                         <td class='value_column geo-input'>
                             <input type='text' name='pos_x' id='pos_x' value='0' size='4' maxlength='3'>
                         </td>
-                        <td class='unit_column'>mm</td>
+                        <td class='unit_column' data-lang='mm'></td>
                     </tr>
                     <tr>
                         <td data-lang='top'></td>
                         <td class='value_column geo-input'>
                             <input type='text' name='pos_y' id='pos_y' value='0' size='4' maxlength='3'>
                         </td>
-                        <td class='unit_column'>mm</td>
+                        <td class='unit_column' data-lang='mm'></td>
                     </tr>
                     <tr>
                         <td data-lang='width'></td>
                         <td class='value_column geo-input'>
                             <input type='text' name='geometry_x' id='geometry_x' value='210' size='4' maxlength='3'>
                         </td>
-                        <td class='unit_column'>mm</td>
+                        <td class='unit_column' data-lang='mm'></td>
                     </tr>
                     <tr>
                         <td data-lang='height'></td>
                         <td class='value_column geo-input'>
                             <input type='text' name='geometry_y' id='geometry_y' value='297' size='4' maxlength='3'>
                         </td>
-                        <td class='unit_column'>mm</td>
+                        <td class='unit_column' data-lang='mm'></td>
                     </tr>
                     <tr class='scan_options_row'>
                         <th colspan='3' data-lang='scan_options'></th>
